@@ -10,8 +10,12 @@ class Solution {
         int currentEnd = 0;
         int farthest = 0;
 
-        for(int i =0; i < nums.length -1; i ++){
+        for(int i =0; i < nums.length -1; i ++){ //nums.length -1 = 4
             farthest = Math.max(farthest, i + nums[i]); //check the current point where is the farthest point
+            // i = 0 : farthest = 2 > jump++, currentEnd = 2
+            // i = 1 : farthest = 4 x
+            // i = 2 : farthest = 4 > jump ++, currentEnd = 4
+            // i = 3 : farthest = 4 
             if(i == currentEnd){
                 jumps++;
                 currentEnd = farthest;
