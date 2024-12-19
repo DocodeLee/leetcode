@@ -34,6 +34,7 @@ class Solution {
             for(int j = numRows - 2; j >0 && index < n; j--){ //starts from the one step up from the bottom
                 sbs[j].append(arr[index++]); // fill the character and index++ change following for loop
             }
+            // for loops finish but the index < n so we go back to first point of while loop
         }
         //Combine all stringbuilders into one
         StringBuilder res = sbs[0]; // this is just set the standard to 0 becuase 0 is the starting row
