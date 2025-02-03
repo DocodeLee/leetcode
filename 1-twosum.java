@@ -1,40 +1,29 @@
 class Solution {
     public int[] twoSum(int[] nums, int target) {
-        int[] answer = new int[2];
-        for(int i = 0; i < nums.length -1; i++){
-            for(int j = i+1; j < nums.length; j++){
-                if(nums[i] + nums[j] == target){
-                    answer[0] = i;
-                    answer[1]= j;
-                    return answer;
-                }
-            }
-        }
-        return new int[0];
-    }
-    
-}
+        // we got Integer array and target int
+        // i need to find two value which makes target and return their indices
 
-// I writed the code but it is not efficiency
+        // numbers can be negative & only one solution available
+        // cannnot use same value twice
+        // array is not sorted
 
-class Solution {
-    public int[] twoSum(int[] nums, int target) {
-      // make a hashMap <Key, Value>
-        Map<Integer, Integer> complements = new HashMap<>();
-      // iterate the loops
-        for(int i =0; i <nums.length;i++){
-            // set the hashMap index
-          Integer complementIndex = complements.get(nums[i]);
-            // if there is no history
-            if(complementIndex != null){
-              // return index, and the partner index
-              return new int[]{i, complementIndex};
-              
-            }
-            // put() is for set the hashMap
-            complements.put(target - nums[i], i);
+        // nested loop is not proper for large input so need to find other way
+
+        // the best way is not check repeteadly and save the values >> HashMap is the possible access
+
+        
+        Map<Integer, Integer> numMap = new HashMap<>(); // making new HashMap
+        
+        for(int i = 0; i < nums.length; i++){ // start iterate
+            int complement = target - nums[i]; // 2 > every loop check the complement
+            
+            if(numMap.containsKey(complement)){ // this is why we set the nums[i] as key
+                return new int[]{numMap.get(complement),i};  // return new array with the get method 
+                // get method return the values from the key info
+            } //3
+                
+            numMap.put(nums[i], i); // 1 > put the key is the nums[i], value is index
         }
-        // this is just for defaults
-        return nums;
+        return new int[]{}; // no solution case
     }
 }
