@@ -41,3 +41,29 @@ class Solution {
         return newDigits;
     }
 }
+
+
+class Solution {
+    public int[] plusOne(int[] digits) {
+        //getting integer array
+        // need to add 1 to the number but if 9 need to do upper
+        // length is not that big
+
+        // the problem is when 9 is on last
+        // time complexity : O(N)
+        // space complexity : O(1)
+
+        // first i thougth for loop is not need but when i did not set [9,9,9] the continuous 9 would be problem
+       for(int i = digits.length -1; i >=0; i-- ){ //set i from the last to the 0 so need to use >= "to check 0"
+            if(digits[i] + 1 != 10){ // if it is not 10
+            digits[i] +=1; // just plus 1
+            return digits; // return digits
+            }
+           // if not
+            digits[i] = 0; // first just change the [i] to 0
+       } 
+        int[] newDigits = new int[digits.length +1]; // make new array with length +1
+        newDigits[0] = 1; // first one should be 1
+        return newDigits; // return new digits
+    }
+}
