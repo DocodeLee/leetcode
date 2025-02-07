@@ -20,25 +20,21 @@ class Solution {
         // we are going to get two arrays
         // m and n means the num of elements which will be merged
         //final array.length should be m+n
-
         //but instead be stored inside the array nums1
-
         // m could be 0
-
         // wants to use two pointer > because we merge, and need to be sorted (need to be compare)
-
         // time complexity O(m+n) ,space complexity O(1)
 
         int i = m - 1; //need to -1 because index starts from 0
-        int j = n - 1;
+        int j = n - 1; // starts from the big index == bigger number to smaller number
         int k = m + n - 1; //tracker for total length
 
-        while(j >=0){ // if j comes 0 no more elements to merege
-        if( i >= 0 && nums1[i] > nums2[j]){
-            nums1[k--] = nums1[i--];
-        }else{
-            nums1[k--] = nums2[j--];
-        }
+        while(j >= 0){ // if j comes 0 no more elements to merege
+        if( i >= 0 && nums1[i] > nums2[j]){ // the array is already sorted but when merge 
+            nums1[k--] = nums1[i--];         // need to compare two
+        }else{                             //bigger number will go bigger index and the next value will come
+            nums1[k--] = nums2[j--]; // k-- : if you set on k-- index the next one cannot bigger than now
+        }                
         }
     }
 }
