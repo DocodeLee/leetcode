@@ -27,7 +27,7 @@ class Solution {
 
         // wants to use two pointer > because we merge, and need to be sorted (need to be compare)
 
-        // time complexity O(m+n) , space complexity O(1)
+        // time complexity O(m+n) ,space complexity O(1)
 
         int i = m - 1; //need to -1 because index starts from 0
         int j = n - 1;
