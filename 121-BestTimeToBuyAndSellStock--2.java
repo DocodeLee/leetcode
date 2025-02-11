@@ -22,16 +22,21 @@ class Solution {
 //solution
 class Solution {
     public int maxProfit(int[] prices) {
-        //prices[i] - prices[j] find min
-        int buy = prices[0]; //for the buy day we just need to find a cheapst day
-        int profit = 0;
-        for(int i = 0; i < prices.length; i++){
-            if(prices[i] < buy){
-                buy = prices[i]; // change the int buy to the minimum value
-            } else if(prices[i] - buy > profit){ //find a expected profit
-                profit = prices[i] -buy; // update the profit for the max value
+        // we are going to get prices info
+        // need to return profit (int)
+        // two pointer O(n^2) is not profer as input too big
+
+        int buy = Integer.MAX_VALUE; // set the buy price > lower buy price will be better
+        int profit = 0; // profit set to 0
+        for(int i =0; i < prices.length; i++){
+            if(prices[i] < buy){ 
+                buy = prices[i];  // ask the buy price first>
+            }
+            // if statement under can be replaced by > profit = Math.max(profit, prices[i] - buy);
+            if(profit < prices[i] - buy){ // compare the profit with current and new challengers.
+                    profit = prices[i] - buy;
             }
         }
         return profit;
-}
+    }
 }
