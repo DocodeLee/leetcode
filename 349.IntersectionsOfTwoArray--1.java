@@ -26,3 +26,28 @@ class Solution {
 
     }
 }
+
+
+// using HashSets withou ArrayList
+class Solution {
+    public int[] intersection(int[] nums1, int[] nums2) {
+        // flow is similar but the different is using Set
+        Set<Integer> set1 = new HashSet<>();
+        for(int num : nums1){
+            set1.add(num);
+        }
+        Set<Integer> set2 = new HashSet<>();
+        for(int num : nums2){
+            if(set1.contains(num)){
+                set2.add(num); // using HashSet so don't need to remove
+            }
+        }
+
+        int[] result = new int[set2.size()]; // declare int[] result with size
+        int i = 0;
+        for(int num : set2){
+            result[i++] = num; // for( int i = 0;.... >> cannot use this for loop because we cannot call the elements in Set
+        }
+        return result; // return results;
+    }
+}
