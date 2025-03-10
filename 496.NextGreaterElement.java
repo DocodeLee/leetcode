@@ -21,3 +21,33 @@ class Solution {
         return result;
     }
 }
+
+
+// use stack instead of iterating multiple times
+
+class Solution {
+    public int[] nextGreaterElement(int[] nums1, int[] nums2) {
+        // step 1 : make indexArray (0 <= nums1[i], nums2[i] <= 10^4)
+        
+        int[] indexArray = new int[10001]; // make a indexArray with full number range
+
+        // step 2 : put the elements in the indexArray
+        for(int i =0; i < nums2.length; i++){
+            indexArray[nums2[i]] = i; // saves i in index about nums2[i];
+        }
+        // step 3 : use method to simple the loop
+        for(int i =0; i < nums1.length;i++){
+            nums1[i] = findNextGreater(nums2, indexArray[nums1[i]]);
+        }
+        return nums1;
+ 
+    }
+
+    // method get nums2, and index
+    public int findNextGreater(int[] nums2, int index){
+        for(int i = index +1; i < nums2.length;i++){
+            if(nums2[i] > nums2[index]) return nums2[i];
+        }
+        return -1;
+    }
+}
