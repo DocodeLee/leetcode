@@ -36,5 +36,10 @@ class Solution {
             type.add(candy);
         }
         return Math.min(type.size(), candyType.length/2);
+        // why we need to consider length/2 > doctors said needs to eat n/2 
+        // even candy has many types, the most eating type is n/2
+        
+        // why min> if candy is all same type we need to return 1 not n/2, so the min value is the more sensitive to answ
+        
     }
 }
