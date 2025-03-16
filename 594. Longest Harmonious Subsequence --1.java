@@ -19,3 +19,26 @@ class Solution {
 
     }
 }
+
+// Method 2 : HashSet
+
+
+class Solution {
+    public int findLHS(int[] nums) {
+        
+        Map<Integer,Integer> freq = new HashMap<>(); // new Map for checking frequency
+        
+        for(int num : nums){ // for each num
+            freq.put(num,freq.getOrDefault(num,0)+1); // count the frequency
+        }
+        
+        int res = 0;
+        for(int num : freq.keySet()){ // for keySet
+            if(freq.containsKey(num+1)){ // if nums has num and (num+1)
+                res= Math.max(res, freq.get(num) + freq.get(num+1)); // update result with res and addition of num and num+1
+            }
+            
+        }
+        return res; //return result
+    }
+}
