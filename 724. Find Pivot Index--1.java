@@ -13,6 +13,8 @@ class Solution {
       
         for(int i = 0; i < nums.length; i++){
             rightSum -= nums[i]; // it makes leftSum bigger and naturally decrease length
+
+            // check after rightSum is decreased because the pivot index is the before index of rightSum
             if(leftSum == rightSum) {
                 return i; // if there is same return i
             }
